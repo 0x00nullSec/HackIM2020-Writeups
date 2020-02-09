@@ -63,7 +63,7 @@ Now the really tricky part of this challenge was how to reliably identify where 
 * size of the complete picture is always 720x720
 * sizes of all characters in the picture will vary
 
-![](@attachment/Clipboard_2020-02-09-13-04-14.png)
+![](attachments/Clipboard_2020-02-09-13-04-14.png)
 
 After some further research I found that OpenCV has an interesting Template Matching API which can be perfectly used for our case:
 See tutorial and explanation here: https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html
@@ -92,7 +92,7 @@ So the first attempt was that I used one template with Doras face and let it run
 
 My first thought whas that maybe there is simply too many different Dora-Versions to make the algorithm work reliably:
 
-![](@attachment/Clipboard_2020-02-09-13-21-45.png)
+![](attachments/Clipboard_2020-02-09-13-21-45.png)
 
 What if instead I try to mark the distractive characters and erase them from the picture by drawing a black or white box over them (depending on the selected comparision method, see link above. Best match area will either get black or white). So I created on template for each of the 5 distractions and in a first step, erased them. Then I also grayscaled the picture to remove the influence of the color as good as possible, and finally looked up for Dora in the remaining picture.  
 
@@ -100,14 +100,14 @@ Basically it worked, but the success rate was if at all, just a little bit bette
 
 Main problem was that sometimes also the distractions couldn't be idenfied reliably. Sometimes Dora was recognized as ape and overwritten by a box. Then when in the second step the algorithm looked for Dora, it just found the ape ...
 
-![](@attachment/Clipboard_2020-02-09-13-49-17.png)
+![](attachments/Clipboard_2020-02-09-13-49-17.png)
 
 So we still need optimize further.
 
 One more step was to instead of just grayscale, I switched to "edge detection", which is also possible via OpenCV:
 https://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html
 
-![](@attachment/Clipboard_2020-02-09-13-33-02.png)
+![](attachmenta/Clipboard_2020-02-09-13-33-02.png)
 
 But still not sufficient. Whatever I did to tweak things, I always got disconnected after just a few dozend successfull pictures. 
 
@@ -136,31 +136,31 @@ id5 --> |No| id6;
 
 The problem really was that the same Dora could be "edged" very differently, depending on her size and the background color which was used. 
 
-![](@attachment/Clipboard_2020-02-09-13-54-43.png)
+![](attachments/Clipboard_2020-02-09-13-54-43.png)
 
 So finally I ended up with a collection of 44 different doras:
 
-![](@attachment/Clipboard_2020-02-09-13-55-56.png)
+![](attachments/Clipboard_2020-02-09-13-55-56.png)
 
 For each received picture I had to iterate trough all of them, which costed a lot of CPU. I noticed that on my Virtualbox Linux which I usualy use for CTF (I know, I'm terribly paranoid ... ), this became a problem because of the 30 min timeout -> 2,25sec / picture limit. So I had to do this from a bare metal linux laptop which I luckily had at hand (preparation is everything! :P)
 
 Also the server with which I'm comunicating was in India and had a ping of about 250ms. 
-![](@attachment/Clipboard_2020-02-09-14-06-44.png)
+![](attachments/Clipboard_2020-02-09-14-06-44.png)
 Since I was adding more and more pictures to the collection, the runtime for the comparision increased, the better the algorithm became. 
 
 In order to keep an eye on this I started to take notes at how long it took to process so and so many pictures. Also these notes showed nicely how my algorithm improved, since with a growing template collection it managed to answer more and more pictures corretly:
 
-![](@attachment/Clipboard_2020-02-09-14-04-33.png)
+![](attachments/Clipboard_2020-02-09-14-04-33.png)
 Y: failed at picture
 X: number of templates in collection
 
 With ~40 pictures in the db it started to become really stable, and finally with 44 I was able to receive picture number 801, which contained the flag,  after 26min! 
 
-![](@attachment/Clipboard_2020-02-09-14-07-08.png)
+![](attachments/Clipboard_2020-02-09-14-07-08.png)
 
 **Important remark:** Ensure to catpure whatever comes after the 800 pictures. You wouldn't be the first one to solve the challenge, but miss the flag :P
 
-And because I'm so proud of what I've created here is a [video of the execution](@attachment/Screencast-dora.webm)
+And because I'm so proud of what I've created here is a [video of the execution](attachments/Screencast-dora.webm)
 
 and the code
 ~~~python
