@@ -280,7 +280,7 @@ print("Average convidence: " + str(sum_conf / i))
 s.close()
 ~~~
 
-**Remark in retrospective:** after sleeping over this, I now remember reading about face recognition in python one day. Surprisingly this is also possible with OpenCV, but there are also [others](https://github.com/ageitgey/face_recognition). So probably my way with plain image comparision was not the most efficient, but still I learned a lot and enjoyed this challenge very much! Although I spend way more time on this as expected ... 
+**Remark in retrospective:** after sleeping over this, I now remember reading about face recognition in python one day. Surprisingly this is also possible with OpenCV, but there are also [others](https://github.com/ageitgey/face_recognition). Probably this would have been way more efficient having facial landmarks of Doras comic face. So my way with plain image comparision was probably not the most efficient, but it worked! And still I learned a lot and enjoyed this challenge very much! Although I spend way more time on this than expected ... 
 
 ![](attachments/Clipboard_2020-02-09-14-28-19.png)
 
