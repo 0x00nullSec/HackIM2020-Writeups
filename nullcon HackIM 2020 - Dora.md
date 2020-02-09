@@ -33,22 +33,7 @@ So the requirements are:
 * it has to work fast and efficient (2,25sec / picture max)
 
 Basic flowchart:
-
-```mermaid
-graph LR
-id1(start)
-id2[receive Data]
-id3[base64 decode];
-id4[store as picture];
-id5[locate Dora ];
-id6[send answer ];
-id1 --> id2;
-id2 --> id3;
-id3 --> id4;
-id4 --> id5;
-id5 --> id6;
-id6 --> id2;
-```
+![](attachments/flow1.jpg)
 
 Decission was quickly made to implement this in python. First we need the basic functionality to establish the connection and send + receive data. I've never done something like this before, but luckily there was help on the internet. After a lot of research I finally learned how to use python sockets to reliably send and receive data. I will provide the full code at the bottom of this writeup. Since these type of nc challenges are quite popular, this basic framework definetly will go into my stash for many more CTFs to come :)
 
@@ -116,23 +101,7 @@ So the thought arose that I need to implement this in a way that it can improve 
 The key finally was to consider the confidence value which was also returned by the template matching. Don't just look for one version of dora (or one version of the distractive characters), look at multiple templates instead and go for the one whith the highest confidence. With this idea in mind I changed back to just search Dora. And whenever the algorithm lead to wrong answer, I would go back at the edged image and copy the Dora version from there into my template collection. So next time a similar picture is transmited, my algorithm would be able to identify this Dora with a high confidence. 
 
 Basic flowchart:
-```mermaid
-graph TD
-id0(start)
-id1[data received and stored]
-id2[search all templates in picture]
-id3[take the one with highest confidence];
-id4[calculate and send response];
-id5{correct?}
-id6(copy failed Dora to template collection and restart)
-id0 --> id1;
-id1 --> id2;
-id2 --> id3;
-id3 --> id4;
-id4 --> id5;
-id5 --> |Yes| id1;
-id5 --> |No| id6;
-```
+![](attachments/flow2.jpg)
 
 The problem really was that the same Dora could be "edged" very differently, depending on her size and the background color which was used. 
 
