@@ -92,7 +92,7 @@ So we still need optimize further.
 One more step was to instead of just grayscale, I switched to "edge detection", which is also possible via OpenCV:
 https://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html
 
-![](attachmenta/Clipboard_2020-02-09-13-33-02.png)
+![](attachments/Clipboard_2020-02-09-13-33-02.png)
 
 But still not sufficient. Whatever I did to tweak things, I always got disconnected after just a few dozend successfull pictures. 
 
@@ -278,6 +278,6 @@ s.close()
 
 **Remark in retrospective:** after sleeping over this, I now remember reading about face recognition in python one day. Surprisingly this is also possible with OpenCV, but there are also [others](https://github.com/ageitgey/face_recognition). So probably my way with plain image comparision was not the most efficient, but still I learned a lot and enjoyed this challenge very much! Although I spend way more time on this as expected ... 
 
-![](@attachment/Clipboard_2020-02-09-14-28-19.png)
+![](attachments/Clipboard_2020-02-09-14-28-19.png)
 
 
