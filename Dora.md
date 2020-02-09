@@ -33,6 +33,7 @@ So the requirements are:
 * it has to work fast and efficient (2,25sec / picture max)
 
 Basic flowchart:
+
 ![](attachments/flow1.jpg)
 
 Decission was quickly made to implement this in python. First we need the basic functionality to establish the connection and send + receive data. I've never done something like this before, but luckily there was help on the internet. After a lot of research I finally learned how to use python sockets to reliably send and receive data. I will provide the full code at the bottom of this writeup. Since these type of nc challenges are quite popular, this basic framework definetly will go into my stash for many more CTFs to come :)
@@ -101,6 +102,7 @@ So the thought arose that I need to implement this in a way that it can improve 
 The key finally was to consider the confidence value which was also returned by the template matching. Don't just look for one version of dora (or one version of the distractive characters), look at multiple templates instead and go for the one whith the highest confidence. With this idea in mind I changed back to just search Dora. And whenever the algorithm lead to wrong answer, I would go back at the edged image and copy the Dora version from there into my template collection. So next time a similar picture is transmited, my algorithm would be able to identify this Dora with a high confidence. 
 
 Basic flowchart:
+
 ![](attachments/flow2.jpg)
 
 The problem really was that the same Dora could be "edged" very differently, depending on her size and the background color which was used. 
