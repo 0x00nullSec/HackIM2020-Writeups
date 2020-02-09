@@ -120,6 +120,7 @@ Since I was adding more and more pictures to the collection, the runtime for the
 In order to keep an eye on this I started to take notes at how long it took to process so and so many pictures. Also these notes showed nicely how my algorithm improved, since with a growing template collection it managed to answer more and more pictures corretly:
 
 ![](attachments/Clipboard_2020-02-09-14-04-33.png)
+
 Y: failed at picture
 X: number of templates in collection
 
