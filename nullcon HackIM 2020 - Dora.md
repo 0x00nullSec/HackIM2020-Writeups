@@ -1,11 +1,3 @@
----
-attachments: [Clipboard_2020-02-09-12-27-00.png, Clipboard_2020-02-09-12-28-51.png, Clipboard_2020-02-09-12-33-22.png, Clipboard_2020-02-09-12-34-01.png, Clipboard_2020-02-09-13-04-14.png, Clipboard_2020-02-09-13-21-45.png, Clipboard_2020-02-09-13-33-02.png, Clipboard_2020-02-09-13-49-17.png, Clipboard_2020-02-09-13-54-43.png, Clipboard_2020-02-09-13-55-56.png, Clipboard_2020-02-09-14-04-33.png, Clipboard_2020-02-09-14-06-44.png, Clipboard_2020-02-09-14-07-08.png, Clipboard_2020-02-09-14-28-19.png, Screencast-dora.webm]
-tags: [Writeups]
-title: nullcon HackIM 2020 - Dora
-created: '2020-02-09T11:19:46.648Z'
-modified: '2020-02-09T13:28:19.719Z'
----
-
 # nullcon HackIM 2020 - Dora
 ## Netcat / Image recognition
 
@@ -18,18 +10,18 @@ nc misc.ctf.nullcon.net 8000
 Also there was a hint that we have to find Dora 800 times
 
 When we initiated the connection for the first time, this is what we got:
-![](@attachment/Clipboard_2020-02-09-12-27-00.png)
+![](attachment/Clipboard_2020-02-09-12-27-00.png)
 
 * A short instruction that we have to respond with 1-4, depending in which sector of the picture Dora is
 * A big base64 string
 
 If we put the string into [CyberChef](https://gchq.github.io/CyberChef/) and hit the Wizard button, we see that it's a base64 encoded raw png image:
 
-![](@attachment/Clipboard_2020-02-09-12-28-51.png)
+![](attachment/Clipboard_2020-02-09-12-28-51.png)
 
 The girl is Dora, and we have to determine in which sector of the picture she is. 
 
-![](@attachment/Clipboard_2020-02-09-12-34-01.png)
+![](attachment/Clipboard_2020-02-09-12-34-01.png)
 
 If your answer is wrong, you will be disconnected and need to start from scratch. 
 
