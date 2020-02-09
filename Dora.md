@@ -115,6 +115,7 @@ For each received picture I had to iterate trough all of them, which costed a lo
 
 Also the server with which I'm comunicating was in India and had a ping of about 250ms. 
 ![](attachments/Clipboard_2020-02-09-14-06-44.png)
+
 Since I was adding more and more pictures to the collection, the runtime for the comparision increased, the better the algorithm became. 
 
 In order to keep an eye on this I started to take notes at how long it took to process so and so many pictures. Also these notes showed nicely how my algorithm improved, since with a growing template collection it managed to answer more and more pictures corretly:
@@ -132,7 +133,7 @@ With ~40 pictures in the db it started to become really stable, and finally with
 
 And because I'm so proud of what I've created here is a [video of the execution](attachments/Screencast-dora.webm)
 
-and the code
+And of course the code:
 ~~~python
 #!/usr/bin/env python3
 
